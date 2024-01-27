@@ -1,0 +1,81 @@
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    /* Color mode HSL(hue, saturation, lightness) */
+    --first-color: hsl(220, 68%, 54%);
+    --first-color-lighten: hsl(220, 68%, 97%);
+    --title-color: hsl(220, 48%, 28%);
+    --text-color: hsl(220, 12%, 45%);
+    --body-color: hsl(230, 100%, 96%);
+    --hover-color: hsl(220, 68%, 54%);
+    --highlight-color: hsl(220, 68%, 54%);
+    --cart-bg: hsl(213, 53%, 97%);
+    --btn-color: hsl(220, 68%, 54%);
+    --error-color:#dc3545;
+
+    --shadow--: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+    /*========== Font and typography ==========*/
+    /* .5rem = 8px | 1rem = 16px ... */
+    --body-font: "Poppins", sans-serif;
+    --home-font:
+        --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/* ====== THEME 1 ======= */
+.dark {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    --first-color: hsl(220, 71%, 51%);
+    --first-color-lighten: #424242;
+    --title-color: #ffffff;
+    --text-color: hsl(220, 68%, 54%);
+    --body-color: #141414;
+    --accent-color: #7F5AF0;
+    --hover-color: hsl(220, 100%, 84%);
+    --shadow--: 0 2px 8px hsla(221, 25%, 25%, 0.1);
+    --highlight-color: white;
+    --cart-bg: #1b1b1b79;
+    --btn-color: hsl(220, 71%, 51%);
+    --error-color:#dc3545;
+
+}
+
+/* ====== THEME 2 ======= */
+.contrast {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    --btn-color: #FFC2D6;
+    --first-color: #ffffff;
+    --first-color-lighten: rgba(255, 255, 255, 0.206);
+    --title-color: #FFFFFF;
+    --text-color: #FFC2D6;
+    --body-color: #FF003D;
+    --hover-color: #000000;
+    --shadow--: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+    --highlight-color: white;
+    --cart-bg: #e30035;
+    --error-color:#f5c0c6;
+}
+
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+.text-profile{
+    color: black;
+}
+
+

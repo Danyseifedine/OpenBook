@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@500&family=Montserrat:wght@400;500;600&display=swap");
+
+
+:root {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    /* Color mode HSL(hue, saturation, lightness) */
+    --first-color: hsl(220, 68%, 54%);
+    --first-color-lighten: hsl(220, 68%, 97%);
+    --home--description-color: hsl(230, 16%, 45%);
+    --title-color: hsl(220, 48%, 28%);
+    --text-color: hsl(220, 12%, 45%);
+    --body-color: hsl(220, 100%, 99%);
+    --hover-color: hsl(220, 68%, 54%);
+    --highlight-color: hsl(220, 68%, 54%);
+    --cart-bg: hsl(213, 53%, 97%);
+    --btn-color: hsl(220, 68%, 54%);
+    --home-color: hsl(230, 70%, 16%);
+    --input: hsl(228, 100%, 92%);
+    --contactColor : hsl(220, 12%, 45%);
+
+    --shadow--: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+    /*========== Font and typography ==========*/
+    /* .5rem = 8px | 1rem = 16px ... */
+    --body-font: "Poppins", sans-serif;
+    --second-font: "Montserrat", sans-serif;
+    --home-font:
+        --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/* ====== THEME 1 ======= */
+.dark {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    --home-color: hsl(230, 48%, 85%);
+    --home--description-color: hsl(230, 16%, 70%);
+    --first-color: hsl(220, 71%, 51%);
+    --first-color-lighten: #424242;
+    --title-color: #ffffff;
+    --text-color: hsl(220, 68%, 54%);
+    --body-color: #141414;
+    --accent-color: #7F5AF0;
+    --hover-color: hsl(220, 100%, 84%);
+    --shadow--: 0 2px 8px hsla(221, 25%, 25%, 0.1);
+    --highlight-color: white;
+    --input: #43434379;
+    --cart-bg: #ff000079;
+    --btn-color: hsl(220, 71%, 51%);
+    --contactColor : hsl(0, 0%, 100%);
+
+}
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--body-color);
+    transition: background-color .4s;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+}
+
+
+/* ===== home section 1 ===== */
+
+.home__container {
+    font-family: var(--second-font) !important;
+    row-gap: 3.5rem;
+}
+
+.home__title {
+    margin-bottom: 1rem;
+    color: var(--home-color);
+    font-size: 3.5rem !important;
+    font-weight: 400;
+}
+
+.home__description {
+    margin-bottom: 4rem;
+    line-height: 1.4;
+    font-size: 15.5px;
+    color: var(--home--description-color);
+}
+
+.home__images {
+    display: flex;
+    justify-content: center;
+}
+
+.home__img-1,
+.home__img-2 {
+    width: 50%;
+}
+
+.home__img-1 {
+    transform: translateX(1rem) rotate(-10deg);
+}
+
+.home__img-2 {
+    transform: translateX(-1rem) rotate(10deg);
+}
+
+/*=============== BUTTON ===============*/
+
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: white;
+    padding: 1rem 1.4rem;
+    transition: box-shadow .4s;
+    font-weight: var(--font-semi-bold);
+}
+
+.button:hover {
+    box-shadow: 0 4px 32px hsla(230, 72%, 32%, .4);
+}
+
+
+/* ===== SERVICES ===== */
+
+/*=============== SERVICES ===============*/
+
+.services__container {
+    row-gap: 3rem;
+}
+
+.services__card {
+    text-align: center;
+}
+
+.services__card i {
+    display: block;
+    font-size: 3rem;
+    color: var(--first-color);
+    margin-bottom: 1rem;
+}
+
+.services__title {
+    font-size: 1.25rem;
+    color: var(--home-color);
+    font-weight: 500;
+    margin-bottom: .5rem;
+}
+
+
+/* ===== SOON BOOK ====== */
+
+
+.soon__images {
+    display: flex;
+    align-items: center;
+}
+
+.soon__article,
+.soon__img {
+    width: 235px;
+    transition: scale .4s;
+}
+
+.soon__img:hover{
+    scale: 1.1;
+}
+
+.soon__article {
+    scale: .8;
+}
+
+.soon__img{
+    border-radius: 3px;
+}
+
+.image-with-shadow {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.612);
+}
+
+/* Swiper class */
+
+.swiper-slide-active,
+.swiper-slide-duplicate-active {
+    scale: 1 !important;
+
+}
+
+/* login notification */
+.notification {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: max-content;
+    padding: 20px 15px;
+    border-radius: 4px;
+    background-color: var(--cart-bg);
+    color: var(--first-color);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(30px);
+    opacity: 0;
+    visibility: hidden;
+    animation: fade-in 6s linear forwards;
+}
+
+.notification__progress {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: calc(100% - 10px);
+    /* Corrected width property */
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(to right, #539dbd, #3250bf);
+    border-radius: inherit;
+    animation: load 5s 0.25s linear forwards;
+}
+
+@keyframes fade-in {
+    5% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes load {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
+/* contacts */
+
+.contact_input{
+    background-color: var(--input) !important;
+    border: transparent !important;
+    color: var(--contactColor) !important;
+}
+
+.btn_contact{
+    background-color: var(--btn-color) !important;
+}
+
+.btn_contact:hover{
+    transition: 0.5s;
+    background-color: hsl(220, 60%, 45%) !important;
+}
+
+/* end */
+
+
+
+/* breakPoint */
+
+@media screen and (max-width: 1193px) {
+    .home__title {
+        font-size: 2.9rem !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    .home {
+        padding-top: 0px !important;
+        margin-top: 150px !important;
+    }
+
+    .home__title {
+        font-size: 2.9rem !important;
+    }
+
+    .home__container {
+        font-family: var(--second-font) !important;
+        row-gap: 3.5rem;
+        text-align: center;
+    }
+
+    .home__img-1,
+    .home__img-2 {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .home__img-1,
+    .home__img-2 {
+        width: 40%;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+
+    .home__title {
+        font-size: 2rem !important;
+    }
+
+    .home__img-1,
+    .home__img-2 {
+        width: 50%;
+    }
+}

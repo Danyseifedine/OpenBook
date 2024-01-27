@@ -1,0 +1,254 @@
+:root {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    /* Color mode HSL(hue, saturation, lightness) */
+    --first-color: hsl(220, 68%, 54%);
+    --first-color-lighten: hsl(220, 68%, 97%);
+    --title-color: hsl(220, 48%, 28%);
+    --text-color: hsl(220, 12%, 45%);
+    --body-color:hsl(230, 100%, 96%);
+    --hover-color: hsl(220, 68%, 54%);
+    --highlight-color: hsl(220, 68%, 54%);
+    --cart-bg: hsl(213, 53%, 97%);
+    --bg-bg: hsl(229, 100%, 95%);
+    --btn-color: hsl(220, 68%, 54%);
+    --line-color: hsla(220, 68%, 54%, 0.275);
+    --textarea: rgba(225, 225, 225, 0.657);
+
+
+    --shadow--: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+    /*========== Font and typography ==========*/
+    /* .5rem = 8px | 1rem = 16px ... */
+    --body-font: "Poppins", sans-serif;
+    --home-font:
+        --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/* ====== THEME 1 ======= */
+.dark {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    --first-color: hsl(220, 71%, 51%);
+    --first-color-lighten: #424242;
+    --title-color: #ffffff;
+    --text-color: hsl(220, 68%, 54%);
+    --body-color: #141414;
+    --accent-color: #7F5AF0;
+    --hover-color: hsl(220, 100%, 84%);
+    --shadow--: 0 2px 8px hsla(221, 25%, 25%, 0.1);
+    --highlight-color: white;
+    --cart-bg: #1b1b1b79;
+    --bg-bg: #24242479;
+    --btn-color: hsl(220, 71%, 51%);
+    --line-color: hsla(220, 68%, 54%, 0.225);
+    --textarea: rgb(27, 27, 27);
+
+}
+
+
+
+/* login notification */
+.notification {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: max-content;
+    padding: 20px 15px;
+    border-radius: 4px;
+    background-color: var(--cart-bg);
+    color: var(--first-color);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(30px);
+    opacity: 0;
+    visibility: hidden;
+    animation: fade-in 6s linear forwards;
+}
+
+.notification__progress {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: calc(100% - 10px); /* Corrected width property */
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(to right, #539dbd, #3250bf);
+    border-radius: inherit;
+    animation: load 5s 0.25s linear forwards;
+}
+
+@keyframes fade-in {
+    5% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes load {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* end */
+
+.error {
+    position: absolute;
+    z-index: 999999;
+    display: flex;
+    margin-top: 7%;
+    justify-content: center;
+    align-items:flex-start;
+    margin-left: 40%;
+}
+
+/* styles.css */
+.book-cover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 5px 8px rgba(0, 0, 0, 0.1), 0 3px 3px rgba(0, 0, 0, 0.1);
+    perspective: 500px;
+    transform-style: preserve-3d;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: 0.2s;
+}
+
+.book-cover:hover{
+    rotate: 3deg;
+}
+
+.all{
+    background-color: var(--cart-bg);
+}
+
+.line{
+    border: 1px solid var(--line-color);
+}
+
+.page-title{
+    color: var(--title-color);
+}
+
+.single_image_cover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px !important;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 5px 8px rgba(0, 0, 0, 0.1), 0 3px 3px rgba(0, 0, 0, 0.1);
+    perspective: 500px;
+    transform-style: preserve-3d;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.book-name {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.author{
+    /* background-color: var(--cart-bg); */
+    color: var(--title-color);
+}
+
+.book_{
+    margin-bottom: 200px;
+}
+
+@media(max-width:850px){
+    .page-title{
+        text-align: center;
+    }
+
+    .book_{
+        margin-bottom: 200px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rating{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .author{
+        text-align: center;
+    }
+}
+
+.description{
+background-color: var(--cart-bg);
+}
+
+.comment{
+    background-color: var(--cart-bg);
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.each_comment{
+    background-color: var(--bg-bg);
+    border-radius: 5px;
+}
+
+.comment_textarea{
+    background-color: var(--cart-bg);
+    border: transparent;
+}
+
+.trash_comment{
+    font-size: 20px;
+    transition: 1s;
+    animation: trash 2s ease infinite;
+}
+
+.trash_comment:hover{
+    color: rgb(197, 0, 197);
+}
+
+.allcomment{
+    margin-top: 20px;
+    border: transparent;
+    background-color: var(--bg-bg);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+.allcomment:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* paginator */
+
+.btn-paginator{
+    background-color: var(--bg-bg);
+    color: var(--btn-color);
+    padding: 15px;
+    font-size: 30px;
+    border-radius: 100%;
+    transition: 0.5;
+}
+
+.btn-paginator:hover{
+    background-color: var(--textarea)
+}
