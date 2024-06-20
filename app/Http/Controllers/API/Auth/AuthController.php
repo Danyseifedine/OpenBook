@@ -42,7 +42,7 @@ class AuthController extends BaseController
         // Check if the user account is inactive.
         if ($user && $user->active === 'inactive') {
             $response = ['error' => 'Account inactive'];
-            return response()->json($response, 400);
+            return response()->json($response, 422);
         }
 
         // Attempt to authenticate the user.
@@ -52,7 +52,7 @@ class AuthController extends BaseController
             // Check if the user exists before creating a token.
             if ($user) {
                 $token = $user->createToken('check credentials to login')->plainTextToken;
-                $response = ['user' => $user, 'token' => $token];
+                $response = ['user' => $user, 'token' => $token, 'success' => true];
                 return response()->json($response, 200);
             } else {
                 // Handle the case where the user is not found.
@@ -62,6 +62,19 @@ class AuthController extends BaseController
         }
 
         $response = ['WrongCredentials' => 'Incorrect Credentials', 'success' => false];
-        return response()->json($response, 400);
+        return response()->json($response, 422);
+    }
+
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logged out successfully'], 200);
+    }
+
+    public function user()
+    {
+        return response()->json(['user' => auth()->user()], 200);
     }
 }

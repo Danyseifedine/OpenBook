@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
+use App\Models\Book;
 use App\Models\Contacts;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,9 +22,30 @@ class AdminController extends BaseController
     function adminPanel()
     {
         if (auth()->user()) {
-            return $this->ViewWithData('Admin/admin', 'data', auth()->user());
+            $userCount = User::count();
+            $userRole0Count = User::where('role', 0)->count();
+            $userRole1Count = User::where('role', 1)->count();
+            $userRole2Count = User::where('role', 2)->count();
+            $userDeactivedCount = User::where('active', 'inactive')->count();
+            $bookCount = Book::count();
+
+            $mostDownloadedBook = Book::orderBy('download_count', 'DESC')->first();
+
+            $data = auth()->user();
+
+            return view('Admin/admin', [
+                'data' => $data,
+                'userCount' => $userCount,
+                'userRole0Count' => $userRole0Count,
+                'userRole1Count' => $userRole1Count,
+                'userRole2Count' => $userRole2Count,
+                'userDeactivedCount' => $userDeactivedCount,
+                'bookCount' => $bookCount,
+                'mostDownloadedBook' => $mostDownloadedBook
+            ]);
         }
     }
+
 
     // ******************************* START USER  ****************************** //
 
@@ -419,10 +441,10 @@ class AdminController extends BaseController
             $data = auth()->user();
         }
 
-        $users = $this->Get_cols_where_paginate(User::class, 'id', 'ASC', null, 10, ['*']);
+        $users = $this->Select_column('paginate', User::class, '*', null, 10, 'id', 'DESC');
         $iterationCount = ($users->currentPage() - 1) * $users->perPage();
 
-        return view('admin/promote', [
+        return view('admin/promotion/promoteTable', [
             'users' => $users,
             'data' => $data,
             'iteration' => $iterationCount
@@ -436,9 +458,9 @@ class AdminController extends BaseController
     function promote_user($user_id)
     {
         $user = Auth::user();
-        $data = $this->SelectWhere(User::class, 'id', $user_id);
+        $data = $this->Select_column('first', User::class, '*', ['id' => $user_id]);
 
-        return view('admin/edit_user_promote', [
+        return view('admin/Promotion/editUserPromotion', [
             "data" => $data,
             "user" => $user
         ]);
@@ -454,7 +476,7 @@ class AdminController extends BaseController
         $data = [
             'role' => 1
         ];
-        $this->Create_Update_Delete(User::class, ['id' => $id], 'update', $data);
+        $this->CRUD(User::class, ['id' => $id], 'update', $data);
         return redirect()->back()->with('success', 'Role Changed');
     }
 
@@ -468,7 +490,7 @@ class AdminController extends BaseController
         $data = [
             'role' => 0
         ];
-        $this->Create_Update_Delete(User::class, ['id' => $id], 'update', $data);
+        $this->CRUD(User::class, ['id' => $id], 'update', $data);
         return redirect()->back()->with('success', 'Role Changed');
     }
 
@@ -482,7 +504,7 @@ class AdminController extends BaseController
         $data = [
             'role' => 2
         ];
-        $this->Create_Update_Delete(User::class, ['id' => $id], 'update', $data);
+        $this->CRUD(User::class, ['id' => $id], 'update', $data);
         return redirect()->back()->with('success', 'Role Changed');
     }
 
@@ -499,26 +521,124 @@ class AdminController extends BaseController
         $searchOption3 = $request->input('searchOption_3');
 
 
-
-        $conditions = [['email', 'LIKE', '%' . $query . '%']];
+        $conditions = [['name', 'LIKE', '%' . $query . '%']];
 
         if ($searchOption1 === 'byEmail') {
             $conditions = [['email', 'LIKE', '%' . $query . '%']];
         }
 
+
         if ($searchOption3 === 'byRole') {
             $conditions = [['role', 'LIKE', '%' . $query . '%']];
         }
 
-        $datas = $this->Get_cols_where_paginate(User::class, 'id', 'ASC', $conditions, 100, ['*']);
+        $datas = $this->Select_column('paginate', User::class, '*', $conditions, 12, 'id', 'DESC');
         $iterationCount = ($datas->currentPage() - 1) * $datas->perPage();
 
-        return view('admin/search/search_in_promotion', [
-            'users' => $datas,
-            'iteration' => $iterationCount
-        ]);
-    }
 
+        return $this->ViewWithData('Admin/promotion/search/searchUser', 'datas', $datas, 'iteration', $iterationCount);
+    }
     //end (SEARCH USER IN PROMOTE TABLE)
 
+    public function bookTable()
+    {
+        $books = Book::paginate(10);
+        $data = Auth::user();
+        return view('Admin/books/bookTable', compact('books', 'data'));
+    }
+
+    public function deleteBook($id)
+    {
+
+        $this->CRUD(Book::class, ['id' => $id], 'delete');
+
+        return redirect()->back()->with('success', 'Book Deleted');
+    }
+
+    public function editBookPage($id)
+    {
+        $data = Auth::user();
+        $book = $this->Select_column('first', Book::class, '*', ['id' => $id]);
+        return view('Admin/books/editBook', compact('book', 'data'));
+    }
+
+    public function updateBook(Request $request, $id)
+    {
+        // Get the book cover image from the request
+        $image = $request->book_cover;
+
+        // Upload the book cover image and get the filename
+        $filename = $image ? $this->uploadFile('image', $image, 'books_cover') : Book::find($id)->cover_image;
+
+        // Get the PDF file from the request
+        $pdfFile = $request->file('pdf_file');
+
+        // Upload the PDF file and get the filename
+        $pdf_name = $pdfFile ? $this->uploadFile('pdf', $pdfFile, 'pdfs') : Book::find($id)->pdf;
+        $data = [
+            'cover_image' => $filename,
+            'pdf' => $pdf_name,
+            'name' => $request->book_title,
+            'author' => $request->book_author,
+            'publication_date' => $request->publication_date,
+            'category' => $request->book_category,
+            'category_arabic' => $request->book_category_arabic,
+            'description_arabic' => $request->book_description_arabic,
+            'language_arabic' => $request->book_language_arabic,
+            'language' => $request->book_language,
+            'pages' => $request->book_page,
+            'world_rate' => $request->book_rate,
+            'description' => $request->book_description
+        ];
+
+        $this->CRUD(Book::class, ['id' => $id], 'update', $data);
+
+        return redirect()->route('bookTable')->with('success', 'Book Updated');
+    }
+
+    public function searchBook(Request $request)
+    {
+        // Get search query and search options from the request.
+        $query = $request->input('query');
+        $searchOption1 = $request->input('searchOption_1');
+        $searchOption2 = $request->input('searchOption_2');
+        $searchOption3 = $request->input('searchOption_3');
+        $searchOption4 = $request->input('searchOption_4');
+
+        // Create a query builder for the "Book" model.
+        $books = Book::query();
+
+        // Check if a search query is provided.
+        if ($query) {
+            $books->where(function ($queryBuilder) use ($query, $searchOption1, $searchOption2, $searchOption3, $searchOption4) {
+                $queryBuilder->where('name', 'LIKE', '%' . $query . '%');
+
+                if ($searchOption1 === 'byAuthor') {
+                    $queryBuilder->orWhere('author', 'LIKE', '%' . $query . '%');
+                }
+
+                if ($searchOption2 === 'byPublished_date') {
+                    $queryBuilder->orWhere('publication_date', 'LIKE', '%' . $query . '%');
+                }
+
+                if ($searchOption3 === 'byLanguage') {
+                    $queryBuilder->orWhere('language', 'LIKE', '%' . $query . '%');
+                }
+
+                if ($searchOption4 === 'byPages') {
+                    $queryBuilder->orWhere('Pages', 'LIKE', '%' . $query . '%');
+                }
+            });
+
+            // Paginate the search results (15 results per page).
+            $books = $books->paginate(15);
+        } else {
+            // If no query is provided, retrieve a random selection of books in pagination.
+            $books = $this->Select_column('Random_order_with_paginate', Book::class, '*', null, 36);
+        }
+
+        return view('Admin/books/searchingAllBooks', [
+            'books' => $books,
+        ]);
+    }
 }

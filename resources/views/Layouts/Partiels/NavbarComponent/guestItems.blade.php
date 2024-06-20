@@ -23,49 +23,9 @@
                     <li>
                         <a href="{{ route('allBooks') }}" class="dropdown__link">@lang('messages.Allbooks')</a>
                     </li>
-                    <li>
-                        <a href="#" class="dropdown__link">@lang('messages.PopularBooks')</a>
-                    </li>
                 </ul>
             </div>
 
-            <div class="dropdown__group">
-                <div class="dropdown__icon">
-                    <i class="ri-medal-line"></i>
-                </div>
-
-                <span class="dropdown__title">@lang('messages.BookRatings')</span>
-
-                <ul class="dropdown__list">
-                    <li>
-                        <a href="#" class="dropdown__link">@lang('messages.TopratedBooks')</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown__link">@lang('messages.AverageratedBooks')</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown__link">@lang('messages.WorstratedBooks')</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="dropdown__group">
-                <div class="dropdown__icon">
-                    <i class="ri-file-paper-2-line"></i>
-                </div>
-
-                <span class="dropdown__title">@lang('messages.NewReleases')</span>
-
-                <ul class="dropdown__list">
-                    <li>
-                        <a href="#" class="dropdown__link">@lang('messages.LatestBooks')</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown__link">@lang('messages.UpcomingBooks')</a>
-                    </li>
-
-                </ul>
-            </div>
         </div>
     </div>
 </li>
@@ -182,4 +142,3 @@
         </button>
     @endguest
 </li>
-

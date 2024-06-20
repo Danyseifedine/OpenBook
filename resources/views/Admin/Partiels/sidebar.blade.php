@@ -59,32 +59,18 @@
                 <span class="tooltip">Messages</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('bookTable') }}">
                     <i class="ri-git-repository-line"></i>
                     <span class="links_name">Books</span>
                 </a>
                 <span class="tooltip">Books</span>
             </li>
             <li>
-                <a href="#" style="color: red">
-                    <i class="ri-alarm-warning-fill"></i>
-                    <span class="links_name">Reports</span>
-                </a>
-                <span class="tooltip">Reports</span>
-            </li>
-            <li>
-                <a href="">
+                <a href="{{ route('promote') }}">
                     <i class="bi bi-chevron-double-up"></i>
                     <span class="links_name">Promote</span>
                 </a>
                 <span class="tooltip">Promote</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="links_name">Setting</span>
-                </a>
-                <span class="tooltip">Setting</span>
             </li>
             <li class="profile">
                 <div class="profile-details">

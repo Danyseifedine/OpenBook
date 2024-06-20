@@ -172,12 +172,34 @@ Route::controller(AdminController::class)->group(function () {
         // Read a message
         Route::get('/messageRead/{id}', 'messageRead')->name('messageRead');
 
-        // Route::get('/promote',  'promote')->name('promote');
-        // Route::get('/promote/{user_id}',  'promote_user')->name('promote_user');
-        // Route::post('/promoteAdmin/{id}',  'promoteAdmin')->name('promoteAdmin');
-        // Route::post('/promoteUser/{id}',  'promoteUser')->name('promoteUser');
-        // Route::post('/promoteMode/{id}',  'promoteMode')->name('promoteMode');
-        // Route::get('/search_promote',  'search_promote')->name('search_promote');
+        // Routes for admin's privilege to manage users
+        // Display the promotion page
+        Route::get('/promote',  'promote')->name('promote');
+
+        // Display the promotion page for a specific user
+        Route::get('/promote/{user_id}',  'promote_user')->name('promote_user');
+
+        // Promote a user to admin
+        Route::post('/promoteAdmin/{id}',  'promoteAdmin')->name('promoteAdmin');
+
+        // Promote a user to normal user
+        Route::post('/promoteUser/{id}',  'promoteUser')->name('promoteUser');
+
+        // Change mode for a user
+        Route::post('/promoteMode/{id}',  'promoteMode')->name('promoteMode');
+
+        // Search for users on promotion page
+        Route::get('/search_promote',  'search_promote')->name('search_promote');
+
+        Route::get('book', 'bookTable')->name('bookTable');
+
+        Route::delete('deleteBook/{id}', 'deleteBook')->name('deleteBook');
+
+        Route::get('book/edit/{id}', 'editBookPage')->name('editBook');
+
+        Route::post('book/update/{id}', 'updateBook')->name('updateBook');
+
+        Route::get('search/book', 'searchBook')->name('searchBookAdmin');
     });
 });
 

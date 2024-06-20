@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::controller(AuthController::class)->group(function () {
-    // Middleware group for guest users (unauthenticated)
     Route::middleware(['guest'])->group(function () {
-        // Define the registration and login routes for guest users
         Route::post('register', 'register')->name('register');
         Route::post('login', 'login')->name('login');
     });

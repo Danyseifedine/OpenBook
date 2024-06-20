@@ -48,59 +48,6 @@
         </div>
     </li>
 
-    @if (app()->getLocale() == 'en')
-        <li>
-            <div class="w-12 rounded mr-12" style="margin-top:18px">
-                <div class="head flex p-3 rounded-t">
-                    <div class="title px-2 font-semibold text-lg" id="inboxClick" style="cursor: pointer">Inbox</div>
-                    <div
-                        class="count border p-1 px-3 font-semibold bg-blue-500 text-white rounded-full text-xs cursor-pointer font-mono">
-                        2</div>
-                </div>
-                <div class="body bg-white overflow-y-auto w-96" id="showMessage" style="display: none">
-                    <div class="messages">
-                        <div
-                            class="msg px-4 py-4 border-l-2 border-blue-500 flex text-sm shadow-sm text-gray-600 cursor-pointer hover:bg-gray-100">
-                            <div class="name font-medium mr-2 text-blue-500 flex-none">Jhon</div>
-                            <div class="text my-auto mr-2">hellow there</div>
-                            <div class="time text-xs mt-1 text-gray-500 font-thin flex-none ml-auto">1 hour ago</div>
-                        </div>
-                        <!-- each -->
-                        <div class="py-3 flex text-sm border text-gray-400 cursor-pointer bg-gray-100 hovay-200">
-                            <div class="name font-m5dium text-blue-500 mx-auto flex-none">Show All</div>
-                        </div>
-                    </div>
-
-                </div>
-        </li>
-    @else
-        <li>
-            <div class="w-12 rounded ml-12" style="margin-top:18px">
-                <div class="head flex p-3 rounded-t">
-                    <div class="title px-2 font-semibold text-lg" id="inboxClick" style="cursor: pointer">@lang('messages.inbox')
-                    </div>
-                    <div
-                        class="count border p-1 px-3 font-semibold bg-blue-500 text-white rounded-full text-xs cursor-pointer font-mono">
-                        2</div>
-                </div>
-                <div class="body bg-white overflow-y-auto w-96" id="showMessage" style="display: none">
-                    <div class="messages">
-                        <div
-                            class="msg px-4 py-4 border-l-2 border-blue-500 flex text-sm shadow-sm text-gray-600 cursor-pointer hover:bg-gray-100">
-                            <div class="name font-medium mr-2 text-blue-500 flex-none">Jhon</div>
-                            <div class="text my-auto mr-2">hellow there</div>
-                            <div class="time text-xs mt-1 text-gray-500 font-thin flex-none ml-auto">1 hour ago</div>
-                        </div>
-                        <!-- each -->
-                        <div class="py-3 flex text-sm border text-gray-400 cursor-pointer bg-gray-100 hovay-200">
-                            <div class="name font-m5dium text-blue-500 mx-auto flex-none">Show All</div>
-                        </div>
-                    </div>
-
-                </div>
-        </li>
-    @endif
-
 @endauth
 <div class="language-selector nav__link">
     <div class="lang-menu">
