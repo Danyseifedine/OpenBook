@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daniseifeddine/Ds-Validator-Toolkit/main/media/logo.png" alt="Logo" width="200">
+</p>
+
 # OpenBook - Your Gateway to Free Books
 
 Welcome to OpenBook, a web platform developed with Laravel, HTML, CSS, Tailwind CSS, JavaScript, and jQuery, designed to provide users with access to a vast collection of free PDF books. OpenBook offers a seamless experience with features like authentication, dark/light mode, language switching, and a user-friendly interface.
