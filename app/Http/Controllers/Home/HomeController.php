@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\ContactRequest;
+use App\Mail\feedback;
 use App\Models\Book;
 use App\Models\Contacts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends BaseController
 {
@@ -58,10 +60,15 @@ class HomeController extends BaseController
             "status" => "unread",
         ];
 
+        $user = auth()->user();
+        
         // Create a new entry in the Contacts table
         $result = $this->CRUD(Contacts::class, null, 'create', $data);
 
         // Check if the message creation was successful
+
+        Mail::to('dany.a.seifeddine@gmail.com')->send(new feedback($data, $user));
+
         if ($result) {
             // Redirect back with a success message
             return $this->Move('back_with_message', null, 'sent', '');

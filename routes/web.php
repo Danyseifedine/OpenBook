@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Books\BookController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\OtherUserController;
 use App\Http\Controllers\Preferences\PreferencesController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Profile\SettingController;
@@ -201,6 +202,10 @@ Route::controller(AdminController::class)->group(function () {
 
         Route::get('search/book', 'searchBook')->name('searchBookAdmin');
     });
+});
+
+Route::controller(OtherUserController::class)->group(function () {
+    Route::get('user/{id}', 'user')->name('user');
 });
 
 

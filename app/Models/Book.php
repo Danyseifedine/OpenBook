@@ -23,4 +23,9 @@ class Book extends Model
         'world_rate',
         'pdf'
     ];
+
+    public function bookUsers()
+    {
+        return $this->hasMany(BookUser::class);
+    }
 }

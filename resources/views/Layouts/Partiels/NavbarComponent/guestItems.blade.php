@@ -8,8 +8,6 @@
         @lang('messages.discover') <i class="ri-arrow-down-s-line dropdown__arrow"></i>
     </div>
 
-
-
     <div class="dropdown__container">
         <div class="dropdown__content">
             <div class="dropdown__group">
@@ -94,10 +92,12 @@
 
                 <ul class="dropdown__list">
                     <li>
-                        <a href="{{ route('category', 'Picture-Book') }}" class="dropdown__link">@lang('messages.PictureBooks')</a>
+                        <a href="{{ route('category', 'Picture-Book') }}"
+                            class="dropdown__link">@lang('messages.PictureBooks')</a>
                     </li>
                     <li>
-                        <a href="{{ route('category', 'Chapter-Book') }}" class="dropdown__link">@lang('messages.ChapterBooks')</a>
+                        <a href="{{ route('category', 'Chapter-Book') }}"
+                            class="dropdown__link">@lang('messages.ChapterBooks')</a>
                     </li>
                 </ul>
             </div>
@@ -119,7 +119,8 @@
                             class="dropdown__link">@lang('messages.arabicpoetry')</a>
                     </li>
                     <li>
-                        <a href="{{ route('category', 'Love-Poetry') }}" class="dropdown__link">@lang('messages.LovePoetry')</a>
+                        <a href="{{ route('category', 'Love-Poetry') }}"
+                            class="dropdown__link">@lang('messages.LovePoetry')</a>
                     </li>
                 </ul>
             </div>

@@ -28,8 +28,14 @@ class ProfileController extends BaseController
         if (auth()->check()) {
             // Get the user data.
             $data = auth()->user();
-            // Return the view with user data.
-            return $this->ViewWithData('Profile/profile', 'data', $data);
+
+            // Get the books associated with the user.
+            $books = $data->user_book->map(function ($userBook) {
+                return $userBook->book;
+            });
+
+            // Return the view with user data and book details.
+            return $this->ViewWithData('Profile/profile', 'data', $data, 'books', $books);
         } else {
             // Return a 403 Forbidden error if the user is not authenticated.
             abort(403);

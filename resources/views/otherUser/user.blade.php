@@ -119,10 +119,6 @@
                     <p class="text-profile flex items-center pt-5 gap-2"><i class="bi bi-vector-pen text-blue-500"
                             style="font-size: 25px"></i>{{ $data->fav_author }}</p>
                 @endif
-                <div class="pt-12 pb-8">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
-                        <a href="{{ route('settings') }}">Edit profile</a> </button>
-                </div>
             </div>
         </div>
 

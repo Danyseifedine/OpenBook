@@ -209,7 +209,7 @@
                         @endif
                     </div>
                     <div class="p-1 text-center	">
-                        <a href="{{ route('singleBook', $book->name) }}"><button
+                        <a href="{{ route('singleBook', $book->id) }}"><button
                                 style="width: 100% !important;position: relative;;bottom:0"
                                 class="btn bg-blue-700 rounded text-white p-1 hover:bg-blue-800">@lang('messages.Details')</button></a>
                     </div>

@@ -67,6 +67,37 @@
     <a href="#" id="change-mode" class="nav__link text-2xl"> <i id="theme-icon" class="ri-moon-line"></i>
     </a>
 </li>
+<li>
+    <button onclick="openSearchModal()"><i class="ri-search-eye-line nav__link text-2xl"></i></button>
+</li>
+
+<!-- Search Modal -->
+{{-- <div id="searchModal" style="width: 100%; height:100vh;background-color:red !important;" class="modal">
+    <div class="modal-content" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <span class="close" onclick="closeSearchModal()">&times;</span>
+        <form class="search-form" method="get" action="">
+            <label for="searchQuery" class="sr-only">Search</label>
+            <input type="text" id="searchQuery" name="searchQuery" placeholder="Search..." class="search-input">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+</div> --}}
+
+{{-- <script>
+    function openSearchModal() {
+        document.getElementById('searchModal').style.display = 'block';
+    }
+
+    function closeSearchModal() {
+        document.getElementById('searchModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('searchModal')) {
+            closeSearchModal();
+        }
+    }
+</script> --}}
 </ul>
 
 <script>
