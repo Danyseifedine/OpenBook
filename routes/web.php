@@ -205,9 +205,8 @@ Route::controller(AdminController::class)->group(function () {
 });
 
 Route::controller(OtherUserController::class)->group(function () {
-    Route::get('user/{id}', 'user')->name('user');
+    Route::get('user/{id}', 'user')->name('otherUserProfile');
+    Route::get('/search', 'search')->name('searchOtherUser');
 });
-
-
 
 Route::get('languageConvert/{local}', [PreferencesController::class, 'Language_converter'])->name('languageConvert');

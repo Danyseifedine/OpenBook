@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController;
 
-class OtherUserController extends Controller
+
+class OtherUserController extends BaseController
 {
     public function user($id)
     {
@@ -19,7 +21,12 @@ class OtherUserController extends Controller
 
     public function search(Request $request)
     {
-        $data = User::where('name', 'like', '%' . $request->search . '%')->get();
-        return view('otherUser.search', compact('data'));
+        $query = $request->input('query');
+
+        $datas = User::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('email', 'LIKE', '%' . $query . '%')
+            ->paginate(12);
+
+        return view('otherUser.search', compact('datas'));
     }
 }

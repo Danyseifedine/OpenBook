@@ -23,26 +23,10 @@
                         style="background-image: url('{{ asset('uploads/default.jpg') }}')"></div>
                 @endif
 
-                @admin
-                    <div class="flex justify-center gap-1 items-center">
-                        <h1 class="text-3xl font-bold pt-8 1:pt-0">{{ $data->name }}</h1>
-                        <p class="mode font-bold pt-9 1:pt-0 text-red-600">(Admin)</p>
-                    </div>
-                @endadmin
 
-                @moderator
                     <div class="flex justify-center items-center gap-1">
-                        <h1 class="text-2xl font-bold pt-8 1:pt-0">{{ $data->name }}</h1>
-                        <p class="mode font-bold pt-9 1:pt-0 text-red-600">(Moderator)
-                        </p>
-                    </div>
-                @endmoderator
-
-                @user
-                    <div>
-                        <h1 class="text-2xl font-bold pt-8 1:pt-0">{{ $data->name }}</h1>
-                    </div>
-                @enduser
+                    <h1 class="text-2xl font-bold pt-8 1:pt-0">{{ $data->name }}</h1>
+                </div>
 
                 <div class="mx-auto 1:mx-0 w-5/5 pt-3 border-b-2 border-blue-500 opacity-55"></div>
                 <p class="text-profile pt-5 flex items-center gap-2"><i class="ri-mail-line text-blue-500"

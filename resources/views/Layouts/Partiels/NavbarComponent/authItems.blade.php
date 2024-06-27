@@ -1,5 +1,7 @@
 {{-- This view is for the navbar and includes available items for the authenticated user --}}
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @auth
     <li class="dropdown__item">
 
@@ -68,36 +70,29 @@
     </a>
 </li>
 <li>
-    <button onclick="openSearchModal()"><i class="ri-search-eye-line nav__link text-2xl"></i></button>
+    <button onclick="openSearchModal()" class="nav__link text-2xl"><i class="ri-search-eye-line"></i></button>
 </li>
 
 <!-- Search Modal -->
-{{-- <div id="searchModal" style="width: 100%; height:100vh;background-color:red !important;" class="modal">
-    <div class="modal-content" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <span class="close" onclick="closeSearchModal()">&times;</span>
-        <form class="search-form" method="get" action="">
+<div id="searchModal" class="fixed inset-0 bg-blue-100 bg-opacity-75 flex items-center justify-center hidden">
+    <div class="bg-white p-10 rounded-lg shadow-lg w-2/4">
+        <span class="close cursor-pointer text-xl font-bold float-right mb-5"
+            onclick="closeSearchModal()">&times;</span>
+        <form class="search-form mt-4" method="get" action="">
             <label for="searchQuery" class="sr-only">Search</label>
-            <input type="text" id="searchQuery" name="searchQuery" placeholder="Search..." class="search-input">
-            <button type="submit" class="search-button">Search</button>
+            <div class="relative w-full">
+                <div class="absolute top-3 left-3">
+                </div>
+                <input type="text" id="searchQuery" name="query" placeholder="Search..."
+                    class="search-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5">
+            </div>
         </form>
+        <div class="mt-4 p-4 border border-gray-300 rounded-lg text-gray-500 overflow-y-auto" style="max-height: 600px;"
+            id="ajax_search_result">
+            No results found. Please try a different search query.
+        </div>
     </div>
-</div> --}}
-
-{{-- <script>
-    function openSearchModal() {
-        document.getElementById('searchModal').style.display = 'block';
-    }
-
-    function closeSearchModal() {
-        document.getElementById('searchModal').style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('searchModal')) {
-            closeSearchModal();
-        }
-    }
-</script> --}}
+</div>
 </ul>
 
 <script>
@@ -105,5 +100,47 @@
         $("#inboxClick").click(function() {
             $("#showMessage").slideToggle("slow");
         });
+
+        $('#searchQuery').on('keyup', function() {
+            var query = $(this).val().trim();
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            if (query === '') {
+                return
+            } else {
+                try {
+                    $.ajax({
+                        url: "{{ route('searchOtherUser') }}",
+                        method: "GET",
+                        headers: {
+                            "X-CSRF-Token": token
+                        },
+                        data: {
+                            _token: token,
+                            query: query,
+                        },
+                        success: function(data) {
+                            $('#ajax_search_result').html(data);
+                        }
+                    });
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                }
+            }
+        });
     });
+
+    function openSearchModal() {
+        document.getElementById('searchModal').classList.remove('hidden');
+    }
+
+    function closeSearchModal() {
+        document.getElementById('searchModal').classList.add('hidden');
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('searchModal')) {
+            closeSearchModal();
+        }
+    }
 </script>
