@@ -128,7 +128,7 @@ class BookController extends BaseController
      * @return \Illuminate\View\View The view with the search results
      */
 
-    public function searchBook(Request $request)
+    public function searchBookUser(Request $request)
     {
         // Get search query and search options from the request.
         $query = $request->input('query');

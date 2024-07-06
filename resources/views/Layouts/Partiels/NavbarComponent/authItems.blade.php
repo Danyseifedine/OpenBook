@@ -83,7 +83,7 @@
             <div class="relative w-full">
                 <div class="absolute top-3 left-3">
                 </div>
-                <input type="text" id="searchQuery" name="query" placeholder="Search..."
+                <input type="text" id="searchUser" name="query" placeholder="Search..."
                     class="search-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5">
             </div>
         </form>
@@ -101,7 +101,7 @@
             $("#showMessage").slideToggle("slow");
         });
 
-        $('#searchQuery').on('keyup', function() {
+        $('#searchUser').on('keyup', function() {
             var query = $(this).val().trim();
             var token = $('meta[name="csrf-token"]').attr('content');
 

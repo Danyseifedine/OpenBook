@@ -127,7 +127,7 @@
             </form>
         @endif
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 gap-5 p-2" id="ajax_search_result">
+        <div class="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 gap-5 p-2" id="ajax_search_result_book">
 
             @foreach ($books as $book)
                 <div class="all p-2 rounded" id="">
@@ -235,15 +235,17 @@
             $('input[type="checkbox"]').on('click', function() {
                 if ($(this).prop('checked')) {
                     $('input[type="checkbox"]').not(this).prop('checked', false);
+
                 }
             });
 
             $('#searchQuery').on('keyup', function() {
                 var query = $(this).val().trim();
+                console.log(query)
                 var token = "{{ csrf_token() }}";
                 {
                     $.ajax({
-                        url: "{{ route('searchBook') }}",
+                        url: "{{ route('searchBookUser') }}",
                         method: "GET",
                         headers: {
                             "X-CSRF-Token": token
@@ -259,7 +261,12 @@
 
                         },
                         success: function(data) {
-                            $('#ajax_search_result').html(data);
+                            $('#ajax_search_result_book').html(data);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error:', error);
+                            console.error('Status:', status);
+                            console.error('Response:', xhr.responseText);
                         }
                     });
                 }

@@ -13,7 +13,8 @@
 
 @section('content')
     <div class="container" style="margin-top:120px">
-        <h1 class="text-4xl mb-3 pb-5 page-title">@lang('messages.Allbooks')
+        <h1 class="text-4xl mb-3 pb-5 page-title">
+            {{ $category }}
         </h1>
     </div>
 
@@ -242,6 +243,7 @@
 
             $('#searchQuery').on('keyup', function() {
                 var query = $(this).val().trim();
+                console.log(query)
                 var token = "{{ csrf_token() }}";
                 console.log(selectedCategory)
 

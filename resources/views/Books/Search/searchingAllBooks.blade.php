@@ -10,7 +10,7 @@
 
 <body>
     @foreach ($books as $book)
-        <div class="all p-2 rounded" id="ajax_search_result">
+        <div class="all p-2 rounded" id="ajax_search_result_book">
             <div>
                 <a href="{{ route('singleBook', $book->id) }}"><img class="book-cover col-span-1"
                         src="{{ asset('books_cover/' . $book->cover_image) }}" alt=""></a>

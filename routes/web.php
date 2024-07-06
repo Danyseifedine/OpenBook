@@ -89,7 +89,7 @@ Route::controller(BookController::class)->prefix('books')->group(function () {
     Route::get("all_books", "allBooks")->name('allBooks');
 
     // Route to search for books
-    Route::get('search', 'searchBook')->name('searchBook');
+    Route::get('search', 'searchBookUser')->name('searchBookUser');
 
     // Categories routes
     // Route to display books in a specific category
