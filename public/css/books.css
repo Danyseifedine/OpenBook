@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@500&family=Montserrat:wght@400;500;600&display=swap");
 :root {
     --header-height: 3.5rem;
     /*========== Colors ==========*/
@@ -54,6 +56,15 @@
 }
 
 
+
+
+:lang(ar) {
+    font-family: "Changa", sans-serif !important;
+}
+
+:lang(ar) {
+    font-family: "Changa", sans-serif !important;
+}
 
 /* login notification */
 .notification {

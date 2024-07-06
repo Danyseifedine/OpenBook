@@ -6,6 +6,14 @@
 
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 
+    @if (app()->getLocale() == 'ar')
+        <style>
+            * {
+                font-family: "Changa", sans-serif !important;
+            }
+        </style>
+    @endif
+
     <div class="max-w-4xl flex items-center h-auto 1:h-screen flex-wrap mx-auto my-32 1:my-0">
 
         <!--Main Col-->

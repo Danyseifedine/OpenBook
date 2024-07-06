@@ -3,13 +3,6 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Requests\ImageRequest;
-use App\Http\Requests\PasswordRequest;
-use App\Http\Requests\PrivacyCheckBoxRequest;
-use App\Http\Requests\UserInfoRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends BaseController
 {
@@ -35,7 +28,7 @@ class ProfileController extends BaseController
             });
 
             // Return the view with user data and book details.
-            return $this->ViewWithData('Profile/profile', 'data', $data, 'books', $books);
+            return $this->ViewWithData('profile/profile', 'data', $data, 'books', $books);
         } else {
             // Return a 403 Forbidden error if the user is not authenticated.
             abort(403);

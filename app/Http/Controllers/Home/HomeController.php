@@ -32,10 +32,10 @@ class HomeController extends BaseController
 
 
             // Render the 'home' view with user data.
-            return $this->ViewWithData('Home/home', 'data', $userData, 'books', $books);
+            return $this->ViewWithData('home/home', 'data', $userData, 'books', $books);
         } else {
             // Render the 'home' view without user data.
-            return $this->ViewWithData('Home/home', 'books', $books);
+            return $this->ViewWithData('home/home', 'books', $books);
         }
     }
 
@@ -61,7 +61,7 @@ class HomeController extends BaseController
         ];
 
         $user = auth()->user();
-        
+
         // Create a new entry in the Contacts table
         $result = $this->CRUD(Contacts::class, null, 'create', $data);
 

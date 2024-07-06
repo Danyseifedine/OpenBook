@@ -1,6 +1,4 @@
 @guest
-
-
     <div class="max-w-2xl mx-auto">
 
         <div id="authentication-modal" aria-hidden="true"

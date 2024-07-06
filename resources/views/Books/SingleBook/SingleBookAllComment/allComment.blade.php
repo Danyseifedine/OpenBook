@@ -74,7 +74,7 @@
                     </div>
                 @endforeach
         </section>
-        <div class="mb-12"> {{ $comments->links('Paginator.paginator') }}
+        <div class="mb-12"> {{ $comments->links('paginator.paginator') }}
         </div>
     </div>
 

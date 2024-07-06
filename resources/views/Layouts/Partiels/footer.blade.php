@@ -44,7 +44,7 @@
    </footer>
    <!--=============== MAIN JS ===============-->
 
-   <script src="{{ asset('js/DropDownNavBar/navbar.js') }}"></script>
+   <script src="{{ asset('js/dropDownNavBar/navbar.js') }}"></script>
 
    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
 

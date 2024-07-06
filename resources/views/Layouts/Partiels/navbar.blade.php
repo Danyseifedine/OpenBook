@@ -14,9 +14,9 @@
     <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
 
-            @include('Layouts.Partiels.NavbarComponent.guestItems')
-            @include('Layouts.Partiels.NavbarComponent.adminItems')
-            @include('Layouts.Partiels.NavbarComponent.authItems')
+            @include('layouts.partiels.navbarComponent.guestItems')
+            @include('layouts.partiels.navbarComponent.adminItems')
+            @include('layouts.partiels.navbarComponent.authItems')
 
     </div>
 

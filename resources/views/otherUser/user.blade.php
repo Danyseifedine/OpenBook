@@ -2,6 +2,14 @@
 @section('title', 'home')
 
 
+
+@if (app()->getLocale() == 'ar')
+    <style>
+        * {
+            font-family: "Changa", sans-serif !important;
+        }
+    </style>
+@endif
 @section('content')
 
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -24,7 +32,7 @@
                 @endif
 
 
-                    <div class="flex justify-center items-center gap-1">
+                <div class="flex justify-center items-center gap-1">
                     <h1 class="text-2xl font-bold pt-8 1:pt-0">{{ $data->name }}</h1>
                 </div>
 

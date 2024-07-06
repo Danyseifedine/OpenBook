@@ -3,6 +3,14 @@
 
 <link rel="stylesheet" href="{{ asset('css/books.css') }}">
 
+
+@if (app()->getLocale() == 'ar')
+    <style>
+        * {
+            font-family: "Changa", sans-serif !important;
+        }
+    </style>
+@endif
 @section('content')
     <div class="container" style="margin-top:120px">
         <h1 class="text-4xl mb-3 pb-5 page-title">@lang('messages.Allbooks')
@@ -217,7 +225,7 @@
             @endforeach
         </div>
         <div class="mt-5 mb-5 p-2">
-            {{ $books->links('Paginator.paginator') }}
+            {{ $books->links('paginator.paginator') }}
         </div>
     </section>
     </section>

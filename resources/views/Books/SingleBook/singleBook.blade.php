@@ -1,7 +1,15 @@
-@extends('layoutS.master')
+@extends('layouts.master')
 @section('title', 'home')
 
 <link rel="stylesheet" href="{{ asset('css/books.css') }}">
+
+@if (app()->getLocale() == 'ar')
+    <style>
+        * {
+            font-family: "Changa", sans-serif !important;
+        }
+    </style>
+@endif
 
 @if (session()->has('success'))
     <div class="notification" style="position: fixed;">
@@ -13,10 +21,10 @@
 @endif
 
 @section('content')
-    @include('Books.SingleBook.Components.downloadBook')
-    @include('Books.SingleBook.Components.suggestedBook')
+    @include('books.singleBook.components.downloadBook')
+    @include('books.singleBook.components.suggestedBook')
     @if (count($authorBooks) !== 0)
-    @include('Books.SingleBook.Components.bookWithSameAuthor')
+        @include('books.singleBook.components.bookWithSameAuthor')
     @endif
-    @include('Books.SingleBook.Components.commentSection')
+    @include('books.singleBook.components.commentSection')
 @endsection

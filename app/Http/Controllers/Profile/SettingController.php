@@ -30,7 +30,7 @@ class SettingController extends BaseController
             // Get the user data.
             $data = auth()->user();
             // Return the view with user data.
-            return $this->ViewWithData('Profile/Settings/settings', 'data', $data);
+            return $this->ViewWithData('profile/settings/settings', 'data', $data);
         } else {
             // Return a 403 Forbidden error if the user is not authenticated.
             abort(403);
@@ -149,7 +149,7 @@ class SettingController extends BaseController
      * @param PrivacyCheckBoxRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    
+
     function privacy(PrivacyCheckBoxRequest $request)
     {
         $dataUpdate = [

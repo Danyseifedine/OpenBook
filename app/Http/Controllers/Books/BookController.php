@@ -32,7 +32,7 @@ class BookController extends BaseController
             $user = Auth::user();
 
             // Return a view with user data
-            return $this->ViewWithData('Books.AddBook.addBook', 'data', $user);
+            return $this->ViewWithData('books.addBook.addBook', 'data', $user);
         }
     }
 
@@ -169,7 +169,7 @@ class BookController extends BaseController
             $books = $this->Select_column('Random_order_with_paginate', Book::class, '*', null, 36);
         }
 
-        return view('Books/Search/searchingAllBooks', [
+        return view('books/search/searchingAllBooks', [
             'books' => $books,
         ]);
     }
@@ -191,14 +191,14 @@ class BookController extends BaseController
         if (auth()->user()) {
             $user = auth()->user();
             $books = $this->Select_column('paginate', Book::class, '*', ['category' => $category], 36, 'id', 'DESC');
-            return view('Books/Categories/categoryBook', [
+            return view('books/categories/categoryBook', [
                 "books" => $books,
                 "data" => $user,
                 "category" => $category
             ]);
         } else {
             $books = $this->Select_column('paginate', Book::class, '*', ['category' => $category], 36, 'id', 'DESC');
-            return view('Books/Categories/categoryBook', [
+            return view('books/categories/categoryBook', [
                 "books" => $books,
                 "category" => $category
             ]);
@@ -259,7 +259,7 @@ class BookController extends BaseController
             $books = $this->Select_column('Random_order_with_paginate', Book::class, '*', ['category' => $category], 36);
         }
 
-        return view('Books/Search/searchingAllBooks', [
+        return view('books/search/searchingAllBooks', [
             'books' => $books,
         ]);
     }
@@ -302,7 +302,7 @@ class BookController extends BaseController
         if (auth()->user()) {
             $user = auth()->user();
 
-            return view('Books/SingleBook/singleBook', [
+            return view('books/singleBook/singleBook', [
                 "book" => $books,
                 "data" => $user,
                 'suggestedBooks' => $suggestedBooks,
@@ -311,7 +311,7 @@ class BookController extends BaseController
                 'authorBooks' => $authorBooks
             ]);
         } else {
-            return view('Books/SingleBook/singleBook', [
+            return view('books/singleBook/singleBook', [
                 "book" => $books,
                 'suggestedBooks' => $suggestedBooks,
                 'comments' => $comment,
@@ -385,7 +385,7 @@ class BookController extends BaseController
             // Retrieve the PDF URL for the specified book.
             $book = $this->Select_column('first', Book::class, 'pdf', ['id' => $bookId]);
 
-            return view('Books/SingleBook/embedPdf', [
+            return view('books/singleBook/embedPdf', [
                 "book" => $book,
                 "data" => $user
             ]);
@@ -498,7 +498,7 @@ class BookController extends BaseController
                 // Retrieve the comments for the book
                 $comments = $this->Select_column('paginate', BookComment::class, '*', null, 20, 'created_at', 'DESC');
 
-                return view('Books/SingleBook/SingleBookAllComment/allComment', [
+                return view('books/singleBook/singleBookAllComment/allComment', [
                     "book" => $book,
                     "data" => $user,
                     'comments' => $comments,

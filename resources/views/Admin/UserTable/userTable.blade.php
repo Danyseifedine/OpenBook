@@ -1,4 +1,4 @@
-@extends('admin.Partiels.sidebar')
+@extends('admin.partiels.sidebar')
 
 
 @section('section')

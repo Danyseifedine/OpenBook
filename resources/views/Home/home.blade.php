@@ -2,11 +2,18 @@
 @section('title', 'home')
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
-<link rel="stylesheet" href="{{ asset('css/Home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
 
 {{-- <link rel="stylesheet" href="{{ asset('css/Library/swiper-bundle.min.css') }}"> --}}
 
+@if (app()->getLocale() == 'ar')
+    <style>
+        * {
+            font-family: "Changa", sans-serif !important;
+        }
+    </style>
+@endif
 
 @section('content')
 
@@ -95,29 +102,29 @@
 
     <!--==================== HOME ====================-->
 
-    @include('Home.components.firstSection')
+    @include('home.components.firstSection')
 
     <!--==================== SERVICES ====================-->
 
-    @include('Home.components.services')
+    @include('home.components.services')
 
     <!--==================== SOON BOOK SWIPER ====================-->
 
-    @include('Home.components.bookSwiper')
+    @include('home.components.bookSwiper')
 
 
     <!--==================== CONTACT US ====================-->
 
-    @include('Home.components.contacts')
+    @include('home.components.contacts')
 
 
     {{-- scripts --}}
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <script src="{{ asset('js/Library/scrollreveal.min.js') }}"></script>
+    <script src="{{ asset('js/library/scrollreveal.min.js') }}"></script>
 
-    <script src="{{ asset('js/Home/others.js') }}"></script>
+    <script src="{{ asset('js/home/others.js') }}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 

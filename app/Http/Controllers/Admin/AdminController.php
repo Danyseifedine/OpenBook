@@ -33,7 +33,7 @@ class AdminController extends BaseController
 
             $data = auth()->user();
 
-            return view('Admin/admin', [
+            return view('admin/admin', [
                 'data' => $data,
                 'userCount' => $userCount,
                 'userRole0Count' => $userRole0Count,
@@ -67,7 +67,7 @@ class AdminController extends BaseController
         $users = $this->Select_column('paginate', User::class, '*', null, 10, 'id', 'DESC');
         $iterationCount = ($users->currentPage() - 1) * $users->perPage();
 
-        return $this->ViewWithData('Admin.UserTable.userTable', 'users', $users, 'data', $data, 'iteration', $iterationCount);
+        return $this->ViewWithData('admin.userTable.userTable', 'users', $users, 'data', $data, 'iteration', $iterationCount);
     }
 
     /**
@@ -128,7 +128,7 @@ class AdminController extends BaseController
         $iterationCount = ($datas->currentPage() - 1) * $datas->perPage();
 
 
-        return $this->ViewWithData('Admin/UserTable/Search/searchUser', 'datas', $datas, 'iteration', $iterationCount);
+        return $this->ViewWithData('admin.userTable.search.searchUser', 'datas', $datas, 'iteration', $iterationCount);
     }
 
     /**
@@ -189,7 +189,7 @@ class AdminController extends BaseController
 
         $user = $this->Select_column('first', User::class, '*', ['id' => $id]);
 
-        return $this->ViewWithData('Admin.UserTable.SingleUserEdit.singleUserEdit', 'user', $user, 'data', $data);
+        return $this->ViewWithData('admin.userTable.singleUserEdit.singleUserEdit', 'user', $user, 'data', $data);
     }
 
     /**
@@ -312,7 +312,7 @@ class AdminController extends BaseController
         $messages = $this->Select_column('paginate', Contacts::class, '*', null, 10, 'id', 'DESC');
         $iterationCount = ($messages->currentPage() - 1) * $messages->perPage();
 
-        return view('Admin/MessageTable/messageTable', [
+        return view('admin.messageTable.messageTable', [
             'contacts' => $messages,
             'data' => $data,
             'iteration' => $iterationCount,
@@ -358,7 +358,7 @@ class AdminController extends BaseController
 
         $iterationCount = ($datas->currentPage() - 1) * $datas->perPage();
 
-        return view('Admin/MessageTable/Search/searchMessage', [
+        return view('admin.messageTable.search.searchMessage', [
             'contacts' => $datas,
             'iteration' => $iterationCount
 
@@ -421,7 +421,7 @@ class AdminController extends BaseController
         $this->CRUD(Contacts::class, ['id' => $id], 'update', $updateStatus);
 
         $data = $this->Select_column('first', Contacts::class, '*', ['id' => $id]);
-        return $this->ViewWithData('Admin/MessageTable/MessageRead/messageRead', 'data', $data);
+        return $this->ViewWithData('admin.messageTable.messageRead.messageRead', 'data', $data);
     }
 
     // end (VIEW MESSAGE)
@@ -460,7 +460,7 @@ class AdminController extends BaseController
         $user = Auth::user();
         $data = $this->Select_column('first', User::class, '*', ['id' => $user_id]);
 
-        return view('admin/Promotion/editUserPromotion', [
+        return view('admin/promotion/editUserPromotion', [
             "data" => $data,
             "user" => $user
         ]);
@@ -536,7 +536,7 @@ class AdminController extends BaseController
         $iterationCount = ($datas->currentPage() - 1) * $datas->perPage();
 
 
-        return $this->ViewWithData('Admin/promotion/search/searchUser', 'datas', $datas, 'iteration', $iterationCount);
+        return $this->ViewWithData('admin.promotion.search.searchUser', 'datas', $datas, 'iteration', $iterationCount);
     }
     //end (SEARCH USER IN PROMOTE TABLE)
 
@@ -544,7 +544,7 @@ class AdminController extends BaseController
     {
         $books = Book::paginate(10);
         $data = Auth::user();
-        return view('Admin/books/bookTable', compact('books', 'data'));
+        return view('admin.books.bookTable', compact('books', 'data'));
     }
 
     public function deleteBook($id)
@@ -559,7 +559,7 @@ class AdminController extends BaseController
     {
         $data = Auth::user();
         $book = $this->Select_column('first', Book::class, '*', ['id' => $id]);
-        return view('Admin/books/editBook', compact('book', 'data'));
+        return view('admin.books.editBook', compact('book', 'data'));
     }
 
     public function updateBook(Request $request, $id)
@@ -637,7 +637,7 @@ class AdminController extends BaseController
             $books = $this->Select_column('Random_order_with_paginate', Book::class, '*', null, 36);
         }
 
-        return view('Admin/books/searchingAllBooks', [
+        return view('admin.books.searchingAllBooks', [
             'books' => $books,
         ]);
     }
