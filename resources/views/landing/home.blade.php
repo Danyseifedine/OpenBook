@@ -102,20 +102,20 @@
 
     <!--==================== HOME ====================-->
 
-    @include('home.components.firstSection')
+    @include('landing.components.firstSection')
 
     <!--==================== SERVICES ====================-->
 
-    @include('home.components.services')
+    @include('landing.components.services')
 
     <!--==================== SOON BOOK SWIPER ====================-->
 
-    @include('home.components.bookSwiper')
+    @include('landing.components.bookSwiper')
 
 
     <!--==================== CONTACT US ====================-->
 
-    @include('home.components.contacts')
+    @include('landing.components.contacts')
 
 
     {{-- scripts --}}
