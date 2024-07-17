@@ -137,14 +137,14 @@
                                         <td class="py-3 px-6 text-center">
                                             <span
                                                 class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs font-semibold">
-                                                @if ($user->role === 0)
+                                                @if ($user->role == 0)
                                                     User
                                                 @endif
 
-                                                @if ($user->role === 1)
+                                                @if ($user->role == 1)
                                                     Admin
                                                 @endif
-                                                @if ($user->role === 2)
+                                                @if ($user->role == 2)
                                                     Moderator
                                                 @endif
                                             </span>

@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('adminOrModerator', function ($role) {
-            return "<?php if(auth()->user()->role === '$role'): ?>";
+            return "<?php if(auth()->user()->role == '$role'): ?>";
         });
 
         // Define the closing directive for @adminOrModerator

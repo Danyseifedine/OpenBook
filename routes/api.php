@@ -30,4 +30,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 });

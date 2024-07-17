@@ -37,4 +37,25 @@ class BooksController extends Controller
             'books_rate_5' => $bookRate5->values()
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $books = Book::where('name', 'LIKE', "%{$query}%")
+            ->get()
+            ->map(function ($book) {
+                if ($book->cover_image && file_exists(public_path('books_cover/' . $book->cover_image))) {
+                    $book->cover_image = url('books_cover/' . $book->cover_image);
+                    $book->pdf = url('pdfs/' . $book->pdf);
+                } else {
+                    $book->cover_image = null;
+                }
+                return $book;
+            });
+
+        return response()->json([
+            'search_results' => $books
+        ]);
+    }
 }
